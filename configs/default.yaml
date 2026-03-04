@@ -1,0 +1,40 @@
+# Default configuration for Integrated Gradients evaluation
+
+# Random seed for reproducibility
+random_seed: 42
+
+# Dataset configuration
+dataset:
+  name: "cifar10"  # Options: "cifar10", "synthetic"
+  data_dir: "./data"
+  batch_size: 32
+  num_workers: 4
+  num_classes: 10
+
+# Model configuration
+model:
+  name: "resnet18"  # Options: "resnet18", "resnet50", "vgg16", "alexnet", "simple_cnn"
+  pretrained: true
+
+# Explainer configuration
+explainer:
+  baseline_method: "zeros"  # Options: "zeros", "mean", "random"
+  n_steps: 50
+  internal_batch_size: 1
+
+# Evaluation configuration
+evaluation:
+  methods:
+    - "integrated_gradients"
+    - "gradient_shap"
+    - "saliency"
+    - "guided_backprop"
+    - "smooth_grad"
+  sample_size: 8
+  create_visualizations: true
+
+# Visualization configuration
+visualization:
+  figsize: [12, 8]
+  save_format: "png"
+  dpi: 300
